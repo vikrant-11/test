@@ -60,7 +60,7 @@ jobs:
             aws ssm start-session --target i-071a4716e15bd8b94 &
             ls
             aws --version
-            # copy ab.txt C:\deployment\
+            copy ab.txt C:\deployment\
       # - name: end session
       #   run: |
       #     aws ssm terminate-session --session-id ${{ steps.generate_value.outputs.random_value }}
