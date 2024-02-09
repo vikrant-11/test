@@ -73,7 +73,7 @@ jobs:
           #    --parameters '{"command": ["sudo sh -c \"systemctl status boot_scripts && ( journalctl -u boot_scripts | cat )\""]}' \
              
           
-          # copy ab.txt C:\deployment\
+          # copy "ab.txt" "C:\Users\deploy"
           # aws ecs execute-command \
           # --region us-east-1 \
           # --command "/bin/sh -c 'ls /tmp/folderthatdoesntexist && echo ok'" | grep ok
