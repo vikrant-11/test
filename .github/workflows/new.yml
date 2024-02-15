@@ -1,0 +1,29 @@
+name: Run Git Bash in Ubuntu Runner
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  git-bash:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Set up Git
+      uses: actions/checkout@v2
+
+    - name: Install wine
+      run: sudo apt-get update && sudo apt-get install -y wine64
+
+    - name: Download Git for Windows
+      run: wget -O git-for-windows.exe https://github.com/git-for-windows/git/releases/download/v2.33.1.windows.1/Git-2.33.1-64-bit.exe
+
+    - name: Install Git for Windows using wine
+      run: wine64 git-for-windows.exe /VERYSILENT /NORESTART
+
+    - name: Verify Git Bash installation
+      run: wine64 cmd /c "dir 'C:\\Program Files\\Git'"
+
+    - name: Run a Git Bash command
+      run: wine64 cmd /c "C:\\Program\ Files\\Git\\bin\\bash.exe -c 'git --version'"
